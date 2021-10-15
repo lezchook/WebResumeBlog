@@ -1,6 +1,7 @@
 package ru.leshchenko.webresumeblog.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +21,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public void register() {
-        System.out.println("test");
+    public void register(@RequestBody String user) {
+        System.out.println(user);
     }
 }
