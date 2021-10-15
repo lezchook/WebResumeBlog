@@ -12,7 +12,7 @@ import java.util.List;
 public class PostService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
     public List<Post> getAllPost() {
         List<Post> posts = new ArrayList<>();
