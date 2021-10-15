@@ -1,6 +1,7 @@
 import {BlogBar} from './BlogBar';
 import React from "react";
 import {NewPostEditor} from './NewPostEditor';
+import axios from "axios";
 
 const posts = [
     {
@@ -25,29 +26,30 @@ const posts = [
 
 class BlogPosts extends React.Component {
 
+    componentDidMount() {
+        axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+    }
+
     state = {
-        blogArr: JSON.parse(localStorage.getItem('blogPosts')) || posts
+        blogArr: posts
     }
 
     likePost = (pos) => {
         const temp = [...this.state.blogArr];
         temp[pos].liked = !temp[pos].liked;
         this.setState({blogArr: temp});
-        localStorage.setItem('blogPosts', JSON.stringify(temp))
     }
 
     deletPost = (pos) => {
         const temp = [...this.state.blogArr];
         temp.splice(pos, 1);
         this.setState({blogArr: temp})
-        localStorage.setItem('blogPosts', JSON.stringify(temp))
     }
 
     addNewPost = (newPost) => {
         this.setState((state) => {
            const posts = [...state.blogArr];
            posts.push(newPost);
-            localStorage.setItem('blogPosts', JSON.stringify(posts));
             return {
                blogArr: posts
            }
@@ -55,7 +57,7 @@ class BlogPosts extends React.Component {
 
     }
     render() {
-        const blogPosts = this.state.blogArr.map((item, pos) => {
+        const blogPosts = this.state.blogArr.slice(0).reverse().map((item, pos) => {
             return(
                 <BlogBar
                     key = {item.id}

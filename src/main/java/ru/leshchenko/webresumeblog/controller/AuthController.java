@@ -21,6 +21,7 @@ public class AuthController {
     @GetMapping("/success")
     public ModelAndView success() {
         ModelAndView mav = new ModelAndView("index");
+        System.out.println();
         return mav;
     }
 
