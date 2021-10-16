@@ -30,6 +30,10 @@ class BlogPosts extends React.Component {
         axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
     }
 
+    componentDidUpdate() {
+        axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+    }
+
     state = {
         blogArr: posts
     }
@@ -41,9 +45,9 @@ class BlogPosts extends React.Component {
     }
 
     deletPost = (pos) => {
+        const blogPosts = this.state.blogArr.slice(0).reverse();
         const temp = [...this.state.blogArr];
-        temp.splice(pos, 1);
-        this.setState({blogArr: temp})
+        axios.delete('http://localhost:8080/user/delete/'+ blogPosts[pos].id);
     }
 
     addNewPost = (newPost) => {
