@@ -30,4 +30,11 @@ public class UserController {
         JSONArray jsonA = new JSONArray().put(postService.getAllPost());
         return postService.getAllPost();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePost(@PathVariable(name = "id") Long Id) throws InterruptedException {
+        System.out.println(Id);
+        Thread.sleep(200);
+        postService.delete(Id);
+    }
 }
