@@ -33,8 +33,6 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public void deletePost(@PathVariable(name = "id") Long Id) throws InterruptedException {
-        System.out.println(Id);
-        Thread.sleep(200);
         postService.delete(Id);
     }
 }
