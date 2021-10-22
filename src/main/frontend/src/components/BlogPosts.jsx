@@ -1,7 +1,7 @@
 import {BlogBar} from './BlogBar';
 import React from "react";
 import {NewPostEditor} from './NewPostEditor';
-import axios from "axios";
+import axios from 'axios';
 
 const posts = [
     {
@@ -46,7 +46,6 @@ class BlogPosts extends React.Component {
 
     deletPost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        const temp = [...this.state.blogArr];
         axios.delete('http://localhost:8080/user/delete/'+ blogPosts[pos].id);
     }
 
