@@ -9,7 +9,6 @@ import ru.leshchenko.webresumeblog.domain.User;
 import ru.leshchenko.webresumeblog.repo.UserRepository;
 
 import java.util.Collections;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/auth")
