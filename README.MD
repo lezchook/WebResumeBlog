@@ -15,7 +15,7 @@ New post - new entry in the database.
 As analogs, the first thing that comes to mind when the word "Blog" is the LiveJournal 
 resource or google blog, also exist from the popular Yandex Zen. All these sites have
 the same meaning, they rather differ only in interfaces, all have one idea - to create
-a page and run it like a blog in which other users can leave comments.
+a page and run it like a blog in which other users can leave comments. In my case, there will also be a page, but one on which it will be possible to leave posts in the form of a comment, in the future it is planned to add comments to posts.
 ### 4) Comparative analysis of analogues
 We will evaluate on a five-point scale
 
