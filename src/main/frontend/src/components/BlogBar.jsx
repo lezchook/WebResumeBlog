@@ -2,7 +2,7 @@ import '../BlogBar.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const BlogBar = ({title, description, liked, likePost, deletPost}) => {
+export const BlogBar = ({title, description, liked, likePost, deletPost, username}) => {
 
     const heartFill = liked ? 'crimson' : 'black';
 
@@ -16,6 +16,8 @@ export const BlogBar = ({title, description, liked, likePost, deletPost}) => {
                         <FavoriteIcon style={{fill: heartFill}} />
                     </button>
                 </div>
+                <h3>"fdsfdsdsfsdf"</h3>
+                <h3>{username}</h3>
             </div>
             <button onClick={deletPost}>
                 <DeleteIcon />

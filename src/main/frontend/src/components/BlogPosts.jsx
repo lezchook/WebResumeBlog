@@ -8,19 +8,22 @@ const posts = [
         id: 1,
         title: 'Post 1',
         description: 'Test Post 1',
-        liked: false
+        liked: false,
+        username: 'ano'
     },
     {
         id: 2,
         title: 'Post 2',
         description: 'Test Post 2',
-        liked: false
+        liked: false,
+        username: 'ano'
     },
     {
         id: 3,
         title: 'Post 3',
         description: 'Test Post 3',
-        liked: false
+        liked: false,
+        username: 'ano'
     }
 ]
 
@@ -67,6 +70,7 @@ class BlogPosts extends React.Component {
                     title = {item.title}
                     description = {item.description}
                     liked = {item.liked}
+                    username = {item.username}
                     likePost = {() => this.likePost(pos)}
                     deletPost = {() => this.deletPost(pos)}
                 />
