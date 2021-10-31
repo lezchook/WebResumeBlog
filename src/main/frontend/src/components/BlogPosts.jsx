@@ -31,6 +31,7 @@ class BlogPosts extends React.Component {
 
     componentDidMount() {
         axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://localhost:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
     }
 
     componentDidUpdate() {
@@ -38,7 +39,8 @@ class BlogPosts extends React.Component {
     }
 
     state = {
-        blogArr: posts
+        blogArr: posts,
+        visiDelete: ""
     }
 
     likePost = (pos) => {
@@ -73,6 +75,7 @@ class BlogPosts extends React.Component {
                     username = {item.username}
                     likePost = {() => this.likePost(pos)}
                     deletPost = {() => this.deletPost(pos)}
+                    visiDelete = {this.state.visiDelete}
                 />
             )
         })

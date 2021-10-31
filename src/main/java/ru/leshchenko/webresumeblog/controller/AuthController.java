@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.leshchenko.webresumeblog.domain.Role;
 import ru.leshchenko.webresumeblog.domain.User;
 import ru.leshchenko.webresumeblog.repo.UserRepository;
+import ru.leshchenko.webresumeblog.service.UserService;
 
 import java.util.Collections;
 
@@ -15,12 +16,11 @@ import java.util.Collections;
 public class AuthController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping("/success")
     public ModelAndView success() {
         ModelAndView mav = new ModelAndView("index");
-        System.out.println();
         return mav;
     }
 
@@ -38,9 +38,7 @@ public class AuthController {
     @PostMapping("/register")
     public ModelAndView addUser(@RequestBody User user) {
         ModelAndView mav = new ModelAndView("index");
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userRepository.save(user);
+        userService.saveUser(user);
         return mav;
     }
 }
