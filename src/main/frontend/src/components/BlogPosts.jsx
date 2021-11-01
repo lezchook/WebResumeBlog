@@ -81,10 +81,12 @@ class BlogPosts extends React.Component {
         })
         return (
             <div>
+                <div style={{visibility: this.state.visiDelete}}>
                 <NewPostEditor
                     posts = {this.state.blogArr}
                     addNewPost = {this.addNewPost}
                 />
+                </div>
                 {blogPosts}
             </div>
         );

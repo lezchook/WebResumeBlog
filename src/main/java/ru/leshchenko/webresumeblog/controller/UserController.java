@@ -67,3 +67,8 @@ public class UserController {
         postService.delete(Id);
     }
 }
+/*
+UPDATE user_role
+SET roles = 'ADMIN'
+WHERE user_id = 26;
+ */
