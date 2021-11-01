@@ -3,7 +3,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {red} from "@mui/material/colors";
 
-export const BlogBar = ({title, description, liked, likePost, deletPost, username, visiDelete}) => {
+export const BlogBar = ({title, description, liked, likePost, deletPost, username, visiDelete, date}) => {
 
     const heartFill = liked ? 'crimson' : 'black';
 
@@ -18,6 +18,7 @@ export const BlogBar = ({title, description, liked, likePost, deletPost, usernam
                     </button>
                 </div>
                 <h3>Author: {username}</h3>
+                <h3>Date: {date}</h3>
             </div>
             <button onClick={deletPost} style={{visibility: visiDelete}}>
                 <DeleteIcon />

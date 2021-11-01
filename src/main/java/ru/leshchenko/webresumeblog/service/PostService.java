@@ -5,8 +5,13 @@ import org.springframework.stereotype.Service;
 import ru.leshchenko.webresumeblog.domain.Post;
 import ru.leshchenko.webresumeblog.repo.PostRepository;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class PostService {
@@ -21,6 +26,8 @@ public class PostService {
     }
 
     public void savePost(Post post) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        post.setDate(LocalDateTime.now().format(formatter));
         postRepository.save(post);
     }
 

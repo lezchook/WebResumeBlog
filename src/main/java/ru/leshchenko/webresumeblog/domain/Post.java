@@ -22,6 +22,17 @@ public class Post {
     @Column(name = "USERNAME")
     private String username;
 
+    @Column(name = "DATE")
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getUsername() {
         return username;
     }
