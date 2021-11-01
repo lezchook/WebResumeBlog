@@ -18,9 +18,8 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
-        axios.post('http://localhost:8080/user/validat', user).then(() => {axios.get('http://localhost:8080/user/validate').then((res) => this.setState({is: res.data}))});
-        axios.post('http://localhost:8080/auth/register', user);
-        console.log(this.state.is)
+        axios.post('http://localhost:8080/user/validat', user).then(() => {axios.get('http://localhost:8080/user/validate').then((res) => this.setState({is: res.data}))})
+            .then(() => {axios.post('http://localhost:8080/auth/register', user)});
     }
 
     usernameChange(event) {

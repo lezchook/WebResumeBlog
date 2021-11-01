@@ -38,7 +38,9 @@ public class AuthController {
     @PostMapping("/register")
     public ModelAndView addUser(@RequestBody User user) {
         ModelAndView mav = new ModelAndView("index");
-        userService.saveUser(user);
+        if (!UserService.vali) {
+            userService.saveUser(user);
+        }
         return mav;
     }
 }
