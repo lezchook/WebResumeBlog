@@ -35,6 +35,12 @@ public class AuthController {
         return mav;
     }
 
+    @GetMapping("/login-error")
+    public ModelAndView failLogin() {
+        ModelAndView mav = new ModelAndView("index");
+        return mav;
+    }
+
     @PostMapping("/register")
     public ModelAndView addUser(@RequestBody User user) {
         ModelAndView mav = new ModelAndView("index");
