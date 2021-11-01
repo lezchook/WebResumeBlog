@@ -2,8 +2,10 @@ package ru.leshchenko.webresumeblog.controller;
 
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.leshchenko.webresumeblog.domain.Post;
 import ru.leshchenko.webresumeblog.domain.Role;
 import ru.leshchenko.webresumeblog.domain.User;
@@ -65,6 +67,19 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public void deletePost(@PathVariable(name = "id") Long Id) throws InterruptedException {
         postService.delete(Id);
+    }
+
+    @PostMapping("/validat")
+    public void validat(@RequestBody User user) {
+        userService.validate(user);
+        System.out.println(user);
+    }
+
+    @GetMapping("/validate")
+    public String validate() {
+        System.out.println(UserService.vali);
+        if (!UserService.vali) return "Success!";
+        else return "User is already registered";
     }
 }
 /*

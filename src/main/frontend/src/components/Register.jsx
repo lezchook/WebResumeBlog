@@ -10,6 +10,7 @@ class Register extends React.Component {
     state = {
         username: "",
         password: "",
+        is: ""
     };
 
     ClickButton = () => {
@@ -17,8 +18,9 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
+        axios.post('http://localhost:8080/user/validat', user).then(() => {axios.get('http://localhost:8080/user/validate').then((res) => this.setState({is: res.data}))});
         axios.post('http://localhost:8080/auth/register', user);
-        console.log(user)
+        console.log(this.state.is)
     }
 
     usernameChange(event) {
@@ -33,9 +35,10 @@ class Register extends React.Component {
         return(
                 <div className="window">
                     <h3>Форма для регистрации</h3>
-                    <input type="text" placeholder="Введите логин" onChange={this.usernameChange} value={this.state.username}></input>
-                    <input type="password" placeholder="пароль" onChange={this.passwordChange} value={this.state.password}></input>
+                    <input type="text" placeholder="Введите логин" onChange={this.usernameChange} value={this.state.username}/>
+                    <input type="password" placeholder="пароль" onChange={this.passwordChange} value={this.state.password}/>
                     <button type="button" onClick={this.ClickButton}>Зарегистрироваться</button>
+                    <h3>{this.state.is}</h3>
                 </div>
         );
     }

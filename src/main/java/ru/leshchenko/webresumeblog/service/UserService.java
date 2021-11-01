@@ -10,6 +10,7 @@ import ru.leshchenko.webresumeblog.repo.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -17,6 +18,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    public static boolean vali = false;
 
     public List<User> getAllUser() {
         List<User> users = new ArrayList<>();
@@ -34,4 +37,19 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public void validate(User user) {
+        vali = false;
+        List<User> users = getAllUser();
+        Iterator<User> iterator = users.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            if (users.get(i).getUsername().equals(user.getUsername())) {
+                vali = true;
+                break;
+            }
+            i++;
+            iterator.next();
+        }
+
+    }
 }
