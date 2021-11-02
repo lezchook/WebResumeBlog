@@ -22,7 +22,7 @@ export class NewPostEditor extends React.Component {
         }
         this.props.addNewPost(post);
         console.log(post);
-        axios.post('http://localhost:8080/user/post', post);
+        axios.post('http://192.168.1.14:8080/user/post', post);
     }
 
     TitleChange(event) {

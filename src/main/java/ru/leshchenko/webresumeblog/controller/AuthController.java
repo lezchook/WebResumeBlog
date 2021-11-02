@@ -9,6 +9,7 @@ import ru.leshchenko.webresumeblog.domain.User;
 import ru.leshchenko.webresumeblog.repo.UserRepository;
 import ru.leshchenko.webresumeblog.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
 @RestController
@@ -42,11 +43,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ModelAndView addUser(@RequestBody User user) {
+    public ModelAndView addUser(@RequestBody User user, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("index");
         if (!UserService.vali) {
             userService.saveUser(user);
         }
+        System.out.println(request.getRemoteAddr());
         return mav;
     }
 }

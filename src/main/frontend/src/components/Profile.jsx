@@ -5,7 +5,7 @@ function Profile() {
     const [joke, setJoke] = useState("");
 
     const getJoke = () => {
-        Axios.get('http://localhost:8080/auth/info').then((response) => {setJoke(response.data)})
+        Axios.get('http://192.168.1.14:8080/auth/info').then((response) => {setJoke(response.data)})
     }
 
     getJoke();

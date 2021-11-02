@@ -33,12 +33,12 @@ const posts = [
 class BlogPosts extends React.Component {
 
     componentDidMount() {
-        axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
-        axios.get('http://localhost:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
+        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://192.168.1.14:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
     }
 
     state = {
@@ -54,7 +54,7 @@ class BlogPosts extends React.Component {
 
     deletPost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        axios.delete('http://localhost:8080/user/delete/'+ blogPosts[pos].id);
+        axios.delete('http://192.168.1.14:8080/user/delete/'+ blogPosts[pos].id);
     }
 
     addNewPost = (newPost) => {
