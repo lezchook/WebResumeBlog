@@ -1,8 +1,10 @@
 package ru.leshchenko.webresumeblog.domain;
 
+import javassist.bytecode.stackmap.TypeData;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +26,18 @@ public class Post {
 
     @Column(name = "DATE")
     private String date;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @CollectionTable(name = "post_likes", joinColumns = @JoinColumn(name = "id_post"))
+    private Set<User> users;
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public String getDate() {
         return date;

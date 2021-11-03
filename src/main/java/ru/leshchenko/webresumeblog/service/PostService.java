@@ -16,6 +16,8 @@ import java.util.Locale;
 @Service
 public class PostService {
 
+    private long ID = 1;
+
     @Autowired
     private PostRepository postRepository;
 
@@ -28,7 +30,9 @@ public class PostService {
     public void savePost(Post post) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         post.setDate(LocalDateTime.now().format(formatter));
+        post.setId(Long.valueOf(ID));
         postRepository.save(post);
+        ID++;
     }
 
     public void delete(Long id) {

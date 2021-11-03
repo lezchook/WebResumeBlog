@@ -81,6 +81,7 @@ public class UserController {
         if (!UserService.vali) return "Success!";
         else return "User is already registered";
     }
+
 }
 /*
 UPDATE user_role

@@ -47,9 +47,8 @@ class BlogPosts extends React.Component {
     }
 
     likePost = (pos) => {
-        const temp = [...this.state.blogArr];
-        temp[pos].liked = !temp[pos].liked;
-        this.setState({blogArr: temp});
+        const blogPosts = this.state.blogArr.slice(0).reverse();
+        axios.post('http://192.168.1.14:8080/user/like' + blogPosts[pos].id);
     }
 
     deletPost = (pos) => {
