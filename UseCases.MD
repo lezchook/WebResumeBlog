@@ -7,3 +7,5 @@ Registered users who have the admin role can fully interact with this applicatio
 
 Registered users who do not have an admin role can only like posts. Regular visited sites that are not registered can view all the content on the site, but cannot edit or modify it.
 ### 2) Use Case Diagram
+
+![image](pictures/UseCases.png)
