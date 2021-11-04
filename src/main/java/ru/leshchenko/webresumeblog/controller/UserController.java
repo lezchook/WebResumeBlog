@@ -2,10 +2,8 @@ package ru.leshchenko.webresumeblog.controller;
 
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ru.leshchenko.webresumeblog.domain.Post;
 import ru.leshchenko.webresumeblog.domain.Role;
 import ru.leshchenko.webresumeblog.domain.User;

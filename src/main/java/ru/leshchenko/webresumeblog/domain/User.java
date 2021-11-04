@@ -1,6 +1,5 @@
 package ru.leshchenko.webresumeblog.domain;
 
-import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
