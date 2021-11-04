@@ -11,22 +11,6 @@ const posts = [
         liked: false,
         username: 'ano',
         date: ''
-    },
-    {
-        id: 2,
-        title: 'Post 2',
-        description: 'Test Post 2',
-        liked: false,
-        username: 'ano',
-        date: ''
-    },
-    {
-        id: 3,
-        title: 'Post 3',
-        description: 'Test Post 3',
-        liked: false,
-        username: 'ano',
-        date: ''
     }
 ]
 
@@ -38,7 +22,8 @@ class BlogPosts extends React.Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}))
+        console.log(this.state.blogArr)
     }
 
     state = {
@@ -48,7 +33,7 @@ class BlogPosts extends React.Component {
 
     likePost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        axios.post('http://192.168.1.14:8080/user/like' + blogPosts[pos].id);
+        axios.post('http://192.168.1.14:8080/user/delete/'+ blogPosts[pos].id);
     }
 
     deletPost = (pos) => {

@@ -82,6 +82,10 @@ public class UserController {
         else return "User is already registered";
     }
 
+    @PostMapping("/delete/{id}")
+    public void like(@PathVariable(name = "id") Long Id) {
+        System.out.println(postService.getPostById(Id));
+    }
 }
 /*
 UPDATE user_role
