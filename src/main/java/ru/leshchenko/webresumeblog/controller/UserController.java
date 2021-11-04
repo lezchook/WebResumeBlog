@@ -86,6 +86,14 @@ public class UserController {
         userSet.add(user);
         post.setUsers(userSet);
         postService.updatePost(post);
+        System.out.println(post);
+    }
+
+    @GetMapping("/like/count/{id}")
+    public String likeCount(@PathVariable(name = "id") Long Id) {
+        Post post = postService.getPostById(Id);
+        Set<User> userSet = post.getUsers();
+        return String.valueOf(userSet.size());
     }
 }
 /*
