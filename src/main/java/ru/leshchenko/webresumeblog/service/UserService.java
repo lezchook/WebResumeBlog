@@ -33,6 +33,20 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public User getUserByName(String username) {
+        List<User> users = getAllUser();
+        Iterator<User> iterator = users.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            if (users.get(i).getUsername().equals(username)) {
+                break;
+            }
+            i++;
+            iterator.next();
+        }
+        return users.get(i);
+    }
+
     public void delete(Long id) {
         userRepository.deleteById(id);
     }

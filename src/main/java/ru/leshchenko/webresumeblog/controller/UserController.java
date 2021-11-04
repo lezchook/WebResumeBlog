@@ -12,6 +12,7 @@ import ru.leshchenko.webresumeblog.service.UserService;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
@@ -28,7 +29,6 @@ public class UserController {
         post.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         postService.savePost(post);
         JSONArray jsonA = new JSONArray().put(postService.getAllPost());
-        System.out.println(jsonA);
     }
 
     @GetMapping("/inform")
@@ -70,19 +70,22 @@ public class UserController {
     @PostMapping("/validat")
     public void validat(@RequestBody User user) {
         userService.validate(user);
-        System.out.println(user);
     }
 
     @GetMapping("/validate")
     public String validate() {
-        System.out.println(UserService.vali);
         if (!UserService.vali) return "Success!";
         else return "User is already registered";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/like/{id}")
     public void like(@PathVariable(name = "id") Long Id) {
-        System.out.println(postService.getPostById(Id));
+        Post post = postService.getPostById(Id);
+        User user = userService.getUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        Set<User> userSet = post.getUsers();
+        userSet.add(user);
+        post.setUsers(userSet);
+        postService.updatePost(post);
     }
 }
 /*

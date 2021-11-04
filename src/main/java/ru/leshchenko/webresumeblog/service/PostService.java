@@ -35,6 +35,10 @@ public class PostService {
         ID++;
     }
 
+    public void updatePost(Post post) {
+        postRepository.save(post);
+    }
+
     public Post getPostById(Long id) {
         return postRepository.getOne(id);
     }

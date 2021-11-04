@@ -2,6 +2,10 @@ package ru.leshchenko.webresumeblog.domain;
 
 import javassist.bytecode.stackmap.TypeData;
 import lombok.Data;
+import org.hibernate.annotations.CollectionType;
+import org.hibernate.annotations.LazyCollection;
+import org.jboss.jandex.ClassType;
+import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -27,8 +31,8 @@ public class Post {
     @Column(name = "DATE")
     private String date;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @CollectionTable(name = "post_likes", joinColumns = @JoinColumn(name = "id_post"))
+    @ManyToMany(targetEntity = User.class)
+    @CollectionTable(name="post_likes",joinColumns=@JoinColumn(name="post_id"))
     private Set<User> users;
 
     public Set<User> getUsers() {

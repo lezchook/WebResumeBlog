@@ -33,7 +33,7 @@ class BlogPosts extends React.Component {
 
     likePost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        axios.post('http://192.168.1.14:8080/user/delete/'+ blogPosts[pos].id);
+        axios.post('http://192.168.1.14:8080/user/like/'+ blogPosts[pos].id);
     }
 
     deletPost = (pos) => {
