@@ -1,6 +1,6 @@
 ## Designing Use Cases
 ### 1) List of actors 
-This application has 3 actors: admin, user and guest.
+This application has 3 actors: admin, user and guest. \
 Admin can:
 1) Add posts
 2) Delete posts
