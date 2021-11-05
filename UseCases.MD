@@ -6,7 +6,7 @@ Admin can:
 2) Delete posts
 3) Like posts or remove his likes from posts
 
-The user can likes posts or removes his likes from posts and eneter admin key for becoming admin. And the guest can only look at the content without changing it in any way.
+The user can likes posts or removes his likes from posts and enters admin key for becoming admin. And the guest can only look at the content without changing it in any way.
 ### 2) Use Case Diagram
 
 ![](pictures/UseCases.png)
