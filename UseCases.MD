@@ -236,3 +236,34 @@ And the guest can only look at the content without changing it in any way.
     <td>If the key is successfully entered, a message appears stating that the user has become an administrator, now the administrator's roles are available to him. Otherwise, nothing changes.</td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <th>Use case</th>
+    <td>Сontent viewing</td>
+  </tr>
+  <tr>
+    <th>Short description</th>
+    <td>In this case, guests, users and administrators can see all the content on the site.</td>
+  </tr>
+  <tr>
+    <th>Actors</th>
+    <td>Guest, User, Admin</td>
+  </tr>
+  <tr>
+    <th>Preconditions</th>
+    <td>The actor knows the IP address of the sites or it's domain.</td>
+  </tr>
+  <tr>
+    <th>Main stream</th>
+    <td>The actor sees the blog feed as an endless thread that can be updated in real time without reloading the page. On posts you can see: title, description, date of creation, number of likes, username of the author of the post. Also, in addition to the blog feed, you can see additional windows, for example, registration / login fields, if the actor is a guest. There will also be windows with just static text information..</td>
+  </tr>
+  <tr>
+    <th>Alternate streams</th>
+    <td>In the absence of the Internet, the site will not be able to load if it is not on the local host</td>
+  </tr>
+  <tr>
+    <th>Postconditions</th>
+    <td>The actor sees content updated in real time.</td>
+  </tr>
+</table>
