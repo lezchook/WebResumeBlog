@@ -7,7 +7,12 @@ Admin can:
 3) Like posts or remove his likes from posts
 4) Logout from account
 
-The user can likes posts or removes his likes from posts and enters admin key for becoming admin. Also user can logout from his account. And the guest can only look at the content without changing it in any way.
+The user can: 
+1) Likes posts or removes his likes from posts
+2) Enters admin key for becoming admin
+3) Logout from account 
+
+And the guest can only look at the content without changing it in any way.
 ### 2) Use Case Diagram
 
 ![](pictures/UseCases.png)
