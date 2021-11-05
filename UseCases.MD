@@ -4,9 +4,9 @@ This application has 3 actors: admin, user and guest.
 Admin can:
 1) Add posts
 2) Delete posts
-3) Like posts or remove likes from posts 
+3) Like posts or remove his likes from posts
 
-The user can likes posts and removes likes from posts. And the guest can only look at the content without changing it in any way.
+The user can likes posts or removes his likes from posts and eneter admin key for becoming admin. And the guest can only look at the content without changing it in any way.
 ### 2) Use Case Diagram
 
 ![](pictures/UseCases.png)
