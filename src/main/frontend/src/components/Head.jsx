@@ -3,11 +3,21 @@ import { Link } from "react-router-dom";
 const Head = () => {
     return (
         <div className="header">
-            <div typeof="text" className="str">
-                <h2 className="left_head">Sergei Leshchenko</h2>
-                <Link to={`/login`} className="right_text">Войти в аккаунт</Link>
-                <Link to={`/register`} className="right_text">Зарегистрироваться</Link>
-            </div>
+                <div typeof="text" className="str">
+                    <h2 className="left_head">Sergei Leshchenko</h2>
+                    <Link to="/register" className="right_text">
+                        <a id="register" className="button purple" href="/register">
+                            <i className="fa fa-user-plus"></i>
+                            <span>Зарегистрироваться</span>
+                        </a>
+                    </Link>
+                    <Link to="/login" className="right_text">
+                        <button id="login" className="button blue">
+                            <i className="fa fa-unlock"></i>
+                            <span>Войти</span>
+                        </button>
+                    </Link>
+                </div>
         </div>
     );
 }

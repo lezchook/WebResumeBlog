@@ -10,6 +10,7 @@ import ru.leshchenko.webresumeblog.domain.User;
 import ru.leshchenko.webresumeblog.service.PostService;
 import ru.leshchenko.webresumeblog.service.UserService;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -92,8 +93,12 @@ public class UserController {
     @GetMapping("/like/count/{id}")
     public String likeCount(@PathVariable(name = "id") Long Id) {
         Post post = postService.getPostById(Id);
-        Set<User> userSet = post.getUsers();
-        return String.valueOf(userSet.size());
+        try {
+            Set<User> userSet = post.getUsers();
+            return String.valueOf(userSet.size());
+        } catch (EntityNotFoundException e) {
+            return "0";
+        }
     }
 }
 /*
