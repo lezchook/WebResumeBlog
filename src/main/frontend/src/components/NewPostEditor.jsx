@@ -35,15 +35,12 @@ export class NewPostEditor extends React.Component {
 
     render() {
         return (
-            <form>
-                <div>
-                    <input type="text" name="postTitle" onChange={this.TitleChange} value={this.state.postTitle}/>
-                </div>
-                <div>
-                    <textarea name="postDescription" onChange={this.DescChange} value={this.state.postDesc}/>
-                </div>
-                <div>
-                    <button type="button" onClick={this.createPost}>Add post</button>
+            <form className="decor">
+                <div className="form-inner">
+                    <h3>Добавить пост</h3>
+                    <input type="text" placeholder="Заголовок" onChange={this.TitleChange}/>
+                    <textarea placeholder="Сообщение..." rows="3" onChange={this.DescChange}/>
+                    <input type="button" value="Отправить" onClick={this.createPost}/>
                 </div>
             </form>
         );

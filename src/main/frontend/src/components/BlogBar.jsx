@@ -23,7 +23,7 @@ export class BlogBar extends React.Component {
             <div className="window bar-post">
                 <div>
                     <h2>{this.props.title}</h2>
-                    <p>{this.props.title}</p>
+                    <p>{this.props.description}</p>
                     <div>
                         <button className="LikeButton" onClick={this.props.likePost}>
                             <FavoriteIcon />
