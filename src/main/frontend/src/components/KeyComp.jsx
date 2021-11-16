@@ -22,7 +22,7 @@ export class KeyComp extends React.Component {
 
     render() {
         return (
-            <form className="decor">
+            <form className="decor" style={{display: this.props.visiKey}}>
                 <div className="form-inner">
                     <h3>Чтобы стать админом, введите ключ</h3>
                     <input type="text" placeholder="Ключ" onChange={this.KeyChange}/>

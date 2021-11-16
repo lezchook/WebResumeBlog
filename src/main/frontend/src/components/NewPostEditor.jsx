@@ -35,7 +35,7 @@ export class NewPostEditor extends React.Component {
 
     render() {
         return (
-            <form className="decor" style={{visibility: this.props.visi}}>
+            <form className="decor" style={{display: this.props.visi}}>
                 <div className="form-inner">
                     <h3>Добавить пост</h3>
                     <input type="text" placeholder="Заголовок" onChange={this.TitleChange}/>

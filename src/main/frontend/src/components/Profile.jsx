@@ -19,7 +19,8 @@ class Profile extends React.Component {
     componentDidMount() {
         axios.get('http://192.168.1.33:8080/auth/info').then((response) => {this.setState({name: response.data})});
         axios.get('http://192.168.1.33:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
-        axios.get('http://192.168.1.33:8080/user/inform').then((res) => this.setState({visi: res.data}));
+        axios.get('http://192.168.1.33:8080/user/inform2').then((res) => this.setState({visi: res.data}));
+        axios.get('http://192.168.1.33:8080/user/inform2rev').then((res) => this.setState({visiKey: res.data}));
     }
 
     componentDidUpdate() {
@@ -29,7 +30,8 @@ class Profile extends React.Component {
     state = {
         name: '',
         blogArr: posts,
-        visi: ''
+        visi: '',
+        visiKey: ''
     };
 
     addNewPost = (newPost) => {
@@ -52,7 +54,9 @@ class Profile extends React.Component {
                     addNewPost={this.addNewPost}
                     visi={this.state.visi}
                 />
-                <KeyComp />
+                <KeyComp
+                    visiKey={this.state.visiKey}
+                />
                 <form method="post" action="/auth/logout">
                     <button type="submit">LogOut</button>
                 </form>

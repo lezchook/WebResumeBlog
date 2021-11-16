@@ -74,6 +74,56 @@ public class UserController {
         }
     }
 
+    @GetMapping("/inform2")
+    public String getRole2() {
+        List<User> users = userRepository.findAllBy();
+        Iterator<User> iterator = users.iterator();
+        int i = 0;
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return "none";
+        }
+        while (iterator.hasNext()) {
+            if (users.get(i).getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())) {
+                break;
+            }
+            i++;
+            iterator.next();
+        }
+        if (users.get(i).getRoles().toArray()[0].equals(Role.USER)) {
+            return "none";
+        }
+        if (users.get(i).getRoles().toArray()[0].equals(Role.ADMIN)) {
+            return "visible";
+        } else {
+            return "none";
+        }
+    }
+
+    @GetMapping("/inform2rev")
+    public String getRole2rev() {
+        List<User> users = userRepository.findAllBy();
+        Iterator<User> iterator = users.iterator();
+        int i = 0;
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return "none";
+        }
+        while (iterator.hasNext()) {
+            if (users.get(i).getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())) {
+                break;
+            }
+            i++;
+            iterator.next();
+        }
+        if (users.get(i).getRoles().toArray()[0].equals(Role.USER)) {
+            return "visible";
+        }
+        if (users.get(i).getRoles().toArray()[0].equals(Role.ADMIN)) {
+            return "none";
+        } else {
+            return "visible";
+        }
+    }
+
     @GetMapping("/posts")
     public List<Post> getPosts() {
         return postRepository.findAllBy();
