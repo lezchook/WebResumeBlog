@@ -44,14 +44,14 @@ public class UserController {
     public void keyCheck(@RequestBody String str) {
         String key = str.replace("=", "");
         if (key.equals("1234")) {
-            User user = userService.getUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
+            User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
             userService.setAdminRole(user);
         }
     }
 
     @GetMapping("/inform")
     public String getRole() {
-        List<User> users = userService.getAllUser();
+        List<User> users = userRepository.findAllBy();
         Iterator<User> iterator = users.iterator();
         int i = 0;
         if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
@@ -98,7 +98,7 @@ public class UserController {
     @PostMapping("/like/{id}")
     public void like(@PathVariable(name = "id") Long Id) {
         Post post = postRepository.getPostById(Id);
-        User user = userService.getUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Set<User> userSet = post.getUsers();
         userSet.add(user);
         post.setUsers(userSet);
