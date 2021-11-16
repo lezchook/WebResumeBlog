@@ -8,10 +8,12 @@ import ru.leshchenko.webresumeblog.domain.Post;
 import ru.leshchenko.webresumeblog.domain.Role;
 import ru.leshchenko.webresumeblog.domain.User;
 import ru.leshchenko.webresumeblog.repo.PostRepository;
+import ru.leshchenko.webresumeblog.repo.UserRepository;
 import ru.leshchenko.webresumeblog.service.PostService;
 import ru.leshchenko.webresumeblog.service.UserService;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +31,9 @@ public class UserController {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/post")
     public void setPost(@RequestBody Post post ) {
         post.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -39,7 +44,8 @@ public class UserController {
     public void keyCheck(@RequestBody String str) {
         String key = str.replace("=", "");
         if (key.equals("1234")) {
-
+            User user = userService.getUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
+            userService.setAdminRole(user);
         }
     }
 

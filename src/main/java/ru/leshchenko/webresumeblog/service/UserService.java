@@ -33,6 +33,12 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void setAdminRole(User user) {
+        delete(user.getId());
+        user.setRoles(Collections.singleton(Role.ADMIN));
+        userRepository.save(user);
+    }
+
     public User getUserByName(String username) {
         List<User> users = getAllUser();
         Iterator<User> iterator = users.iterator();
