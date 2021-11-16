@@ -36,7 +36,7 @@ public class Post {
     private Set<User> users;
 
     public Set<User> getUsers() {
-        return users;
+        return this.users;
     }
 
     public void setUsers(Set<User> users) {

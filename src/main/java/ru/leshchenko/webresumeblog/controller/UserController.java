@@ -155,6 +155,24 @@ public class UserController {
         postRepository.save(post);
     }
 
+    @GetMapping("/like/inform/{id}")
+    public String likeClicked(@PathVariable(name = "id") Long Id) {
+        Post post = postRepository.getPostById(Id);
+        try {
+            try {
+                System.out.println(Id);
+                Set<User> userSet = post.getUsers();
+                User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+                if (userSet.contains(user)) return "true";
+                else return "false";
+            } catch (NullPointerException e) {
+                return "0";
+            }
+        } catch (EntityNotFoundException e) {
+            return "0";
+        }
+    }
+
     @GetMapping("/like/count/{id}")
     public String likeCount(@PathVariable(name = "id") Long Id) {
         Post post = postRepository.getPostById(Id);
