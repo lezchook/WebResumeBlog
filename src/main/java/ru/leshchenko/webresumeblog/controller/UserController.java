@@ -32,6 +32,14 @@ public class UserController {
         JSONArray jsonA = new JSONArray().put(postService.getAllPost());
     }
 
+    @PostMapping("/key")
+    public void keyCheck(@RequestBody String str) {
+        String key = str.replace("=", "");
+        if (key.equals("1234")) {
+
+        }
+    }
+
     @GetMapping("/inform")
     public String getRole() {
         List<User> users = userService.getAllUser();

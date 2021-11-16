@@ -15,7 +15,7 @@ export class BlogBar extends React.Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://192.168.1.14:8080/user/like/count/' + this.props.id).then((res) => this.setState({count: res.data}))
+        axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => this.setState({count: res.data}))
     }
 
     render() {

@@ -17,12 +17,12 @@ const posts = [
 class BlogPosts extends React.Component {
 
     componentDidMount() {
-        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
-        axios.get('http://192.168.1.14:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
+        axios.get('http://192.168.1.33:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://192.168.1.33:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
     }
 
     componentDidUpdate() {
-        axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}))
+        axios.get('http://192.168.1.33:8080/user/posts').then((res) => this.setState({blogArr: res.data}))
     }
 
     state = {
@@ -32,12 +32,12 @@ class BlogPosts extends React.Component {
 
     likePost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        axios.post('http://192.168.1.14:8080/user/like/'+ blogPosts[pos].id);
+        axios.post('http://192.168.1.33:8080/user/like/'+ blogPosts[pos].id);
     }
 
     deletePost = (pos) => {
         const blogPosts = this.state.blogArr.slice(0).reverse();
-        axios.delete('http://192.168.1.14:8080/user/delete/'+ blogPosts[pos].id);
+        axios.delete('http://192.168.1.33:8080/user/delete/'+ blogPosts[pos].id);
     }
 
     addNewPost = (newPost) => {
