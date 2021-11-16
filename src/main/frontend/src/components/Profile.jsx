@@ -18,6 +18,7 @@ class Profile extends React.Component {
     componentDidMount() {
         axios.get('http://192.168.1.14:8080/auth/info').then((response) => {this.setState({name: response.data})});
         axios.get('http://192.168.1.14:8080/user/posts').then((res) => this.setState({blogArr: res.data}));
+        axios.get('http://192.168.1.14:8080/user/inform').then((res) => this.setState({visiDelete: res.data}));
     }
 
     componentDidUpdate() {
@@ -26,7 +27,8 @@ class Profile extends React.Component {
 
     state = {
         name: '',
-        blogArr: posts
+        blogArr: posts,
+        visiDelete: ""
     };
 
     addNewPost = (newPost) => {
@@ -44,7 +46,7 @@ class Profile extends React.Component {
         return (
             <div className="window">
                 <h3>Добро пожаловать, {this.state.name}</h3>
-                <NewPostEditor
+                <NewPostEditor style={{visibility: this.state.visiDelete}}
                     posts={this.state.blogArr}
                     addNewPost={this.addNewPost}
                 />
