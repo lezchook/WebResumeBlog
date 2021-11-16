@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.leshchenko.webresumeblog.domain.Post;
 import ru.leshchenko.webresumeblog.domain.Role;
 import ru.leshchenko.webresumeblog.domain.User;
+import ru.leshchenko.webresumeblog.repo.PostRepository;
 import ru.leshchenko.webresumeblog.service.PostService;
 import ru.leshchenko.webresumeblog.service.UserService;
 
@@ -25,11 +26,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private PostRepository postRepository;
+
     @PostMapping("/post")
     public void setPost(@RequestBody Post post ) {
         post.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         postService.savePost(post);
-        JSONArray jsonA = new JSONArray().put(postService.getAllPost());
     }
 
     @PostMapping("/key")
@@ -67,13 +70,12 @@ public class UserController {
 
     @GetMapping("/posts")
     public List<Post> getPosts() {
-        JSONArray jsonA = new JSONArray().put(postService.getAllPost());
-        return postService.getAllPost();
+        return postRepository.findAllBy();
     }
 
     @DeleteMapping("/delete/{id}")
     public void deletePost(@PathVariable(name = "id") Long Id) throws InterruptedException {
-        postService.delete(Id);
+        postRepository.deleteById(Id);
     }
 
     @PostMapping("/validat")
@@ -89,21 +91,24 @@ public class UserController {
 
     @PostMapping("/like/{id}")
     public void like(@PathVariable(name = "id") Long Id) {
-        Post post = postService.getPostById(Id);
+        Post post = postRepository.getPostById(Id);
         User user = userService.getUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
         Set<User> userSet = post.getUsers();
         userSet.add(user);
         post.setUsers(userSet);
-        postService.updatePost(post);
-        System.out.println(post);
+        postRepository.save(post);
     }
 
     @GetMapping("/like/count/{id}")
     public String likeCount(@PathVariable(name = "id") Long Id) {
-        Post post = postService.getPostById(Id);
+        Post post = postRepository.getPostById(Id);
         try {
-            Set<User> userSet = post.getUsers();
-            return String.valueOf(userSet.size());
+            try {
+                Set<User> userSet = post.getUsers();
+                return String.valueOf(userSet.size());
+            } catch (NullPointerException e) {
+                return "0";
+            }
         } catch (EntityNotFoundException e) {
             return "0";
         }
