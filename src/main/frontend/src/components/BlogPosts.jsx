@@ -26,7 +26,7 @@ class BlogPosts extends React.Component {
     }
 
     state = {
-        blogArr: posts,
+        blogArr: [],
         visiDelete: ""
     }
 

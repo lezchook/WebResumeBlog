@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {red} from "@mui/material/colors";
 import axios from "axios";
 import React from "react";
-let a = 0;
+
 export class BlogBar extends React.Component {
     constructor(props) {
         super(props);
@@ -12,16 +12,47 @@ export class BlogBar extends React.Component {
 
     state = {
         count: 0,
-        clicked: 'false'
+        clicked: 'fals',
+        color: ''
     }
 
-    componentDidUpdate() {
-        axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => this.setState({count: res.data})).then((re) => {
-            if (a !== 10) {
-                axios.get('http://192.168.1.33:8080/user/like/inform/' + this.props.id).then((res) => this.setState({clicked: res.data}));
-                a = a + 1;
-            }
-        });
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+    }
+
+    componentDidMount() {
+        for(let i = 1; i<=10; i = i + 1) {
+            axios.get('http://192.168.1.33:8080/user/like/inform/' + this.props.id).then((res) => {
+                this.setState({clicked: res.data});
+            }).finally(res => {
+                    if (this.state.clicked === 'tru') {
+                        this.setState({color: 'crimson'});
+                    }
+                }
+            );
+            axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => {
+                this.setState({count: res.data});
+            });
+        }
+    }
+
+    onPress1 = () => {
+        this.props.likePost();
+        for (let i = 1; i<=10; i = i + 1) {
+            axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => {
+                this.setState({count: res.data});
+            });
+        }
+        this.setState({color: 'crimson'});
+    }
+
+    onPress2 = () => {
+        this.setState({color: 'black'});
+    }
+
+    onPress = () => {
+        if (this.state.clicked === 'fals') this.onPress1();
+        else if (this.state.clicked === 'tru') this.onPress2();
     }
 
 
@@ -32,8 +63,8 @@ export class BlogBar extends React.Component {
                     <h2>{this.props.title}</h2>
                     <p>{this.props.description}</p>
                     <div>
-                        <button className="LikeButton" onClick={this.props.likePost}>
-                            <FavoriteIcon />
+                        <button className="LikeButton" onClick={this.onPress}>
+                            <FavoriteIcon style={{fill: this.state.color}} />
                         </button>
                         <h4>Likes count: {this.state.count}</h4>
                     </div>

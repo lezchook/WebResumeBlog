@@ -163,8 +163,8 @@ public class UserController {
                 System.out.println(Id);
                 Set<User> userSet = post.getUsers();
                 User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-                if (userSet.contains(user)) return "true";
-                else return "false";
+                if (userSet.contains(user)) return "tru";
+                else return "fals";
             } catch (NullPointerException e) {
                 return "0";
             }
