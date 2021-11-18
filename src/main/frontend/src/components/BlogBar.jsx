@@ -13,7 +13,7 @@ export class BlogBar extends React.Component {
     state = {
         count: 0,
         clicked: 'fals',
-        color: ''
+        color: 'orange'
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -47,7 +47,7 @@ export class BlogBar extends React.Component {
     }
 
     onPress2 = () => {
-        this.setState({color: 'black'});
+        this.setState({color: 'orange'});
     }
 
     onPress = () => {
