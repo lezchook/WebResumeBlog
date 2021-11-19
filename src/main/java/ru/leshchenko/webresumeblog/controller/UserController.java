@@ -155,6 +155,16 @@ public class UserController {
         postRepository.save(post);
     }
 
+    @DeleteMapping("/like/delete/{id}")
+    public void likeDelete(@PathVariable(name = "id") Long Id) {
+        Post post = postRepository.getPostById(Id);
+        User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Set<User> userSet = post.getUsers();
+        userSet.remove(user);
+        post.setUsers(userSet);
+        postRepository.save(post);
+    }
+
     @GetMapping("/like/inform/{id}")
     public String likeClicked(@PathVariable(name = "id") Long Id) {
         Post post = postRepository.getPostById(Id);

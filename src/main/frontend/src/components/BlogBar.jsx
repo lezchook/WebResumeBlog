@@ -38,16 +38,24 @@ export class BlogBar extends React.Component {
 
     onPress1 = () => {
         this.props.likePost();
-        for (let i = 1; i<=10; i = i + 1) {
+        for (let i = 1; i<=30; i = i + 1) {
             axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => {
                 this.setState({count: res.data});
             });
         }
+        this.setState({clicked: 'tru'});
         this.setState({color: 'crimson'});
     }
 
     onPress2 = () => {
+        axios.delete('http://192.168.1.33:8080/user/like/delete/' + this.props.id)
         this.setState({color: 'orange'});
+        for (let i = 1; i<=30; i = i + 1) {
+            axios.get('http://192.168.1.33:8080/user/like/count/' + this.props.id).then((res) => {
+                this.setState({count: res.data});
+            });
+        }
+        this.setState({clicked: 'fals'});
     }
 
     onPress = () => {
