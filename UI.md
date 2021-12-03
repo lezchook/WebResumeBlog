@@ -53,4 +53,4 @@
 ![](pictures/user.drawio.png)
 
 ### Для залогиненного пользователя с правами админа (Admin)
-![](pictures/adminn.png)
+![](pictures/admin.diagram.png)
