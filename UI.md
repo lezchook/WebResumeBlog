@@ -26,3 +26,17 @@
     <li>Форма для публикация поста</li>
     <li>Лента с постами, на которых есть кнопка лайка и кнопка удаления поста</li>
 </ul>
+
+![](pictures/guest1.png)
+
+![](pictures/guest2.png)
+
+![](pictures/guest3.png)
+
+![](pictures/user.png)
+
+![](pictures/admin.png)
+
+![](pictures/guest.drawio%20(1).png)
+
+![](pictures/user%20(2).png)
