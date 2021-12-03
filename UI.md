@@ -48,8 +48,7 @@
 
 ## Диаграммы функциональности интерфейсов
 ### Для случайного посетителя (Гостя)
-![](pictures/guest.diargramm.png)
-
+![](pictures/guest.diargram.png)
 ### Для залогиненного пользователя (User)
 ![](pictures/user.drawio.png)
 
