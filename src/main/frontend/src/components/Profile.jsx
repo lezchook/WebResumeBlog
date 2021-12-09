@@ -48,7 +48,7 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="window">
-                <h3>Добро пожаловать, {this.state.name}</h3>
+                <h3>Welcome, {this.state.name}</h3>
                 <NewPostEditor
                     posts={this.state.blogArr}
                     addNewPost={this.addNewPost}

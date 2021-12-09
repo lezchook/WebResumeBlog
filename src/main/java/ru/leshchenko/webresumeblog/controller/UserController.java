@@ -133,6 +133,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("/keycheck/{key}")
+    public String keyCheck(@PathVariable(name = "key") Long Id) {
+        if (Id == 1234) return "Now you are admin! Update page";
+        else return "Not correct key";
+    }
+
     @GetMapping("/posts")
     public List<Post> getPosts() {
         return postRepository.findAllBy();

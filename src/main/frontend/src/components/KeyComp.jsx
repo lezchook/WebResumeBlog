@@ -8,12 +8,15 @@ export class KeyComp extends React.Component {
     }
 
     state = {
-        key: ""
+        key: "",
+        message: ""
     };
 
     createPost = () => {
         const key1 = this.state.key;
-        axios.post('http://192.168.1.33:8080/user/key', key1);
+        axios.post('http://192.168.1.33:8080/user/key', key1).then(
+            res => {axios.get('http://192.168.1.33:8080/user/keycheck/'+ key1).then(req => this.setState({message: req.data}))}
+        );
     }
 
     KeyChange(event) {
@@ -24,9 +27,10 @@ export class KeyComp extends React.Component {
         return (
             <form className="decor" style={{display: this.props.visiKey}}>
                 <div className="form-inner">
-                    <h3>Чтобы стать админом, введите ключ</h3>
-                    <input type="text" placeholder="Ключ" onChange={this.KeyChange}/>
-                    <input type="button" value="Отправить" onClick={this.createPost}/>
+                    <h4>Write key to get admin role</h4>
+                    <input type="text" placeholder="Key" onChange={this.KeyChange}/>
+                    <input type="button" value="Check" onClick={this.createPost}/>
+                    <h4>{this.state.message}</h4>
                 </div>
             </form>
         );

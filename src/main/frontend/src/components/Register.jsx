@@ -33,11 +33,11 @@ class Register extends React.Component {
     render() {
         return(
                 <div className="window">
-                    <h3>Форма для регистрации</h3>
-                    <input type="text" placeholder="Введите логин" onChange={this.usernameChange} value={this.state.username} className="logRegArea"/>
+                    <h3>Registration form</h3>
+                    <input type="text" placeholder="Login" onChange={this.usernameChange} value={this.state.username} className="logRegArea"/>
                     <span style={{margin: 5}}></span>
-                    <input type="password" placeholder="пароль" onChange={this.passwordChange} value={this.state.password} className="logRegArea"/>
-                    <button type="button" onClick={this.ClickButton} className="button green">Зарегистрироваться</button>
+                    <input type="password" placeholder="password" onChange={this.passwordChange} value={this.state.password} className="logRegArea"/>
+                    <button type="button" onClick={this.ClickButton} className="button green">Sign Up</button>
                     <h3>{this.state.is}</h3>
                 </div>
         );
