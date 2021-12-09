@@ -74,6 +74,14 @@
   background: #2196F3;
   margin-right: 25px;
 }
+.button.red {
+  background: #f50000;
+  margin-right: 25px;
+}
+.button.green {
+  background: #06f809;
+  margin-right: 25px;
+}
 .button.purple {
   background: #9b59b6;
 }
@@ -96,6 +104,17 @@
 }
 .button:active.purple {
   background: #8f4bab;
+}
+
+.logRegArea {
+  width: 45%;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  background: #E9EFF6;
+  line-height: 40px;
+  border-width: 0;
+  border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {

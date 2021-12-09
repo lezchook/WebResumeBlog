@@ -74,6 +74,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("/informLike")
+    public String getLikeInfo() {
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return "none";
+        } else {
+            return "contents";
+        }
+    }
+
     @GetMapping("/inform2")
     public String getRole2() {
         List<User> users = userRepository.findAllBy();

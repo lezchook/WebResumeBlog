@@ -63,6 +63,10 @@ export class BlogBar extends React.Component {
         else if (this.state.clicked === 'tru') this.onPress2();
     }
 
+    onPressDelete = () => {
+        this.props.deletePost();
+
+    }
 
     render() {
         return (
@@ -71,18 +75,19 @@ export class BlogBar extends React.Component {
                     <h2>{this.props.title}</h2>
                     <p>{this.props.description}</p>
                     <div>
-                        <button className="LikeButton" onClick={this.onPress}>
+                        <button className="LikeButton" onClick={this.onPress} style={{display: this.props.visiLike}}>
                             <FavoriteIcon style={{fill: this.state.color}} />
                         </button>
                         <h4>Likes count: {this.state.count}</h4>
                     </div>
                     <h3>Author: {this.props.username}</h3>
                     <h3>Date: {this.props.date}</h3>
-                    <h3>{this.state.clicked}</h3>
                 </div>
-                <button onClick={this.props.deletPost} style={{visibility: this.props.visiDelete}}>
+                <form method="get" action="/auth/success">
+                <button onClick={this.props.deletePost} style={{visibility: this.props.visiDelete}}>
                     <DeleteIcon/>
                 </button>
+                </form>
             </div>
         );
     }

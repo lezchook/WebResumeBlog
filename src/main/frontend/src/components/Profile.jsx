@@ -58,7 +58,7 @@ class Profile extends React.Component {
                     visiKey={this.state.visiKey}
                 />
                 <form method="post" action="/auth/logout">
-                    <button type="submit">LogOut</button>
+                    <button type="submit" className="button red">LogOut</button>
                 </form>
             </div>
         );

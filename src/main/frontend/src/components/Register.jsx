@@ -34,9 +34,10 @@ class Register extends React.Component {
         return(
                 <div className="window">
                     <h3>Форма для регистрации</h3>
-                    <input type="text" placeholder="Введите логин" onChange={this.usernameChange} value={this.state.username}/>
-                    <input type="password" placeholder="пароль" onChange={this.passwordChange} value={this.state.password}/>
-                    <button type="button" onClick={this.ClickButton}>Зарегистрироваться</button>
+                    <input type="text" placeholder="Введите логин" onChange={this.usernameChange} value={this.state.username} className="logRegArea"/>
+                    <span style={{margin: 5}}></span>
+                    <input type="password" placeholder="пароль" onChange={this.passwordChange} value={this.state.password} className="logRegArea"/>
+                    <button type="button" onClick={this.ClickButton} className="button green">Зарегистрироваться</button>
                     <h3>{this.state.is}</h3>
                 </div>
         );

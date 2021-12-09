@@ -9,9 +9,10 @@ class login extends React.Component {
             <div className="window">
                 <h3>Форма для входа</h3>
                 <form method="post" action="/auth/login">
-                    <input type="text" placeholder="Введите логин" name="username"></input>
-                    <input type="password" placeholder="пароль" name="password"></input>
-                    <button type="submit">Войти</button>
+                    <input type="text" placeholder="Введите логин" name="username" className="logRegArea"></input>
+                    <span style={{margin: 5}}></span>
+                    <input type="password" placeholder="пароль" name="password" className="logRegArea"></input>
+                    <button type="submit" className="button green">Войти</button>
                     <Route path="/auth/login-error" component={fail} />
                 </form>
             </div>
