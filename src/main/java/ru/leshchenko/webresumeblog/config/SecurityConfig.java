@@ -19,7 +19,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
-
+    
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -48,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("select username, password, active from users where username=?")
                 .authoritiesByUsernameQuery("select username, password, active from users where username=?");
     }
