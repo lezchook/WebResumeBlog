@@ -43,6 +43,8 @@ public class AuthController {
     public ModelAndView addUser(@RequestBody User user, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("index");
         if (!UserService.vali) {
+            String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
             userService.saveUser(user);
         }
         return mav;
