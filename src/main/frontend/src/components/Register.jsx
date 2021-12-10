@@ -18,8 +18,12 @@ class Register extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
-        axios.post('http://192.168.1.33:8080/user/validat', user).then(() => {axios.get('http://192.168.1.33:8080/user/validate').then((res) => this.setState({is: res.data}))})
-            .then(() => {axios.post('http://192.168.1.33:8080/auth/register', user)});
+        if (user.username === '') {
+            this.setState({is: 'Error, incorrect login'});
+        } else {
+            axios.post('http://192.168.1.33:8080/user/validat', user).then(() => {axios.get('http://192.168.1.33:8080/user/validate').then((res) => this.setState({is: res.data}))})
+                .then(() => {axios.post('http://192.168.1.33:8080/auth/register', user)});
+        }
     }
 
     usernameChange(event) {
